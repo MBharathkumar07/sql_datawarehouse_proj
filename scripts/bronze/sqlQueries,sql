@@ -9,8 +9,6 @@ CREATE TABLE bronze.crm_cust_info (
 );
 
 
-
-
 CREATE TABLE bronze.crm_prd_info (
     prd_id       INT,
     prd_key      NVARCHAR(50),
@@ -36,8 +34,6 @@ CREATE TABLE bronze.crm_sales_details (
 
 
 
-
-
 CREATE TABLE bronze.erp_loc_a101 (
     cid    NVARCHAR(50),
     cntry  NVARCHAR(50)
@@ -57,6 +53,11 @@ CREATE TABLE bronze.erp_px_cat_g1v2 (
     subcat       NVARCHAR(50),
     maintenance  NVARCHAR(50)
 );
+
+
+-- Queries to insert data
+
+
 BULK INSERT bronze.crm_cust_info
 from 'C:\Users\mbhar\Downloads\datasets\datasets\source_crm\cust_info.csv'
 with(
@@ -65,8 +66,6 @@ fieldterminator = ',',
 tablock
 )
 
-
--- Queries to insert data
 
   
 BULK INSERT bronze.crm_prd_info
