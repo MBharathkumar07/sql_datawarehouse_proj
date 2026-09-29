@@ -50,7 +50,7 @@ where flag_last = 1 and cst_id is not null;
 
 
 
-
+-- fix crm_prd_info
 
 
 
