@@ -58,6 +58,8 @@ from silver.crm_cust_info;
 
 
 
+
+
 --========================================================================
 --test for crm_prd_info
 --========================================================================
@@ -107,6 +109,9 @@ where prd_start_dt > prd_end_dt;
 
 
 
+
+
+
 ========================================================================
 -- test for crm_sales_details
 ========================================================================
@@ -146,3 +151,30 @@ where sls_price is null or sls_price !=  sls_sales / sls_quantity  ;
 
 SELECT * from bronze.crm_sales_details
 where sls_quantity is null or sls_quantity !=  sls_sales / sls_price  ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- test for erp_cust_az12
+
+
+
+-- Lets get the diff types of values in gender
+select distinct gen
+from bronze.erp_cust_az12;
+
+
+-- getting invalud bdates
+SELECT DISTINCT
+bdate
+from bronze.erp_cust_az12
+where bdate < '1926-01-01' or bdate > getdate()
