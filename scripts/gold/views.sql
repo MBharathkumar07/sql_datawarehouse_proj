@@ -47,3 +47,29 @@ pd.prd_start_dt     AS start_date
 FROM silver.crm_prd_info AS pd
 LEFT JOIN silver.erp_px_cat_g1v2 AS pc
 	on pd.cat_id = pc.id;
+
+
+
+
+
+
+=========================================================
+--Create fact sales table
+=========================================================
+	
+CREATE VIEW gold.fact_sales AS 
+SELECT 
+    sd.sls_ord_num  AS order_number,
+    pr.product_key  AS product_key,
+    cu.customer_key AS customer_key,
+    sd.sls_order_dt AS order_date,
+    sd.sls_ship_dt  AS shipping_date,
+    sd.sls_due_dt   AS due_date,
+    sd.sls_sales    AS sales_amount,
+    sd.sls_quantity AS quantity,
+    sd.sls_price    AS price
+FROM SILVER.crm_sales_details AS sd
+LEFT JOIN gold.dim_customers AS cu
+on sls_cust_id = customer_id
+LEFT JOIN gold.dim_products AS pr
+ON sls_prd_key = product_number;
